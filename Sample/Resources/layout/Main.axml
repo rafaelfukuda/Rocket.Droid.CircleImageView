@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#4CAF50"
+    android:padding="20dp">
+<!--    with color and width border parameter-->
+    <rocket.droid.CircleImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/bob"
+        android:gravity="center"
+        android:layout_margin="20dp"
+        local:border_width="2dp"
+        local:border_color="#FFFFFF" />
+<!--    with no border-->
+    <rocket.droid.CircleImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/bob"
+        android:layout_margin="20dp"
+        android:gravity="center" />
+<!--    with default border color-->
+    <rocket.droid.CircleImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/bob"
+        android:layout_margin="20dp"
+        android:gravity="center"
+        local:border_width="2dp" />
+</LinearLayout>

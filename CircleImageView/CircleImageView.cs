@@ -4,8 +4,8 @@ using Android.Graphics;
 using Android.Content;
 using Android.Content.Res;
 using Android.Util;
-using Android.Graphics.Drawables;
 using Java.Lang;
+using Android.Graphics.Drawables;
 using CircleImageView;
 
 namespace Rocket.Droid
@@ -21,9 +21,10 @@ namespace Rocket.Droid
 		private static Android.Widget.ImageView.ScaleType SCALE_TYPE = Android.Widget.ImageView.ScaleType.CenterCrop;
 
 		private readonly Bitmap.Config BITMAP_CONFIG = Bitmap.Config.Argb8888;
-		private const int COLORDRAWABLE_DIMENSION = 2;
 
+		private const int COLORDRAWABLE_DIMENSION = 2;
 		private const int DEFAULT_BORDER_WIDTH = 0;
+		private static int DEFAULT_BORDER_COLOR = Color.Black;
 
 		private RectF mDrawableRect;
 		private RectF mBorderRect;
@@ -33,17 +34,7 @@ namespace Rocket.Droid
 		private Paint mBorderPaint;
 
 		private Color mBorderColor;
-
-		private int _borderWidth;
-		public int BorderWidth { 
-			get { return _borderWidth; } 
-			set { 
-				if (_borderWidth != value) {
-					_borderWidth = value;
-					setup ();
-				}
-			}
-		}
+		private int _borderWidth = DEFAULT_BORDER_WIDTH;
 
 		private Bitmap mBitmap;
 		private BitmapShader mBitmapShader;
@@ -59,27 +50,29 @@ namespace Rocket.Droid
 		private bool mSetupPending;
 
 		public CircleImageView (IntPtr javaRef, Android.Runtime.JniHandleOwnership transfer) : base (javaRef, transfer) {
-			init ();
 		}
 
 		public CircleImageView (Context context) : base(context) {
-			init ();
+			mBorderColor = Color.Black;
+
+			Init ();
 		}
 
-		public CircleImageView(Context context, IAttributeSet attrs) : base (context, attrs, 0) {}
+		public CircleImageView(Context context, IAttributeSet attrs) : this (context, attrs, 0) {
+		}
 
 		public CircleImageView(Context context, IAttributeSet attrs, int defStyle) : base (context, attrs, defStyle) {
 			TypedArray a = context.ObtainStyledAttributes(attrs, Resource.Styleable.CircleImageView, defStyle, 0);
 
-			_borderWidth = a.GetDimensionPixelSize (Resource.Styleable.CircleImageView_border_color, _borderWidth);
-			mBorderColor = a.GetColor (Resource.Styleable.CircleImageView_border_width, mBorderColor);
+			_borderWidth = a.GetDimensionPixelSize (Resource.Styleable.CircleImageView_border_width, DEFAULT_BORDER_WIDTH);
+			mBorderColor = a.GetColor (Resource.Styleable.CircleImageView_border_color, DEFAULT_BORDER_COLOR);
 
 			a.Recycle ();
 
-			init();
+			Init();
 		}
 
-		private void init() {
+		private void Init() {
 			this.SetScaleType (SCALE_TYPE);
 			mReady = true;
 
@@ -89,9 +82,6 @@ namespace Rocket.Droid
 			mShaderMatrix = new Matrix ();
 			mBitmapPaint = new Paint ();
 			mBorderPaint = new Paint ();
-
-			mBorderColor = Color.Black;
-			_borderWidth = 0;
 
 			if (mSetupPending) {
 				setup();
