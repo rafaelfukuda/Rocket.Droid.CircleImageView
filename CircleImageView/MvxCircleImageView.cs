@@ -63,6 +63,17 @@ namespace Rocket.Droid
 
 			a.Recycle ();
 
+			Init();		
+		}
+
+		public MvxCircleImageView(Context context, IAttributeSet attrs, int defStyle) : base (context, attrs) {
+			TypedArray a = context.ObtainStyledAttributes(attrs, Resource.Styleable.CircleImageView, defStyle, 0);
+
+			_borderWidth = a.GetDimensionPixelSize (Resource.Styleable.CircleImageView_border_width, DEFAULT_BORDER_WIDTH);
+			mBorderColor = a.GetColor (Resource.Styleable.CircleImageView_border_color, DEFAULT_BORDER_COLOR);
+
+			a.Recycle ();
+
 			Init();			
 		}
 

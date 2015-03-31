@@ -1,12 +1,16 @@
 ﻿<Properties StartupItem="Sample/Sample.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" PreferredExecutionTarget="Android.074f4a6d00e38660" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CircleImageView/CircleImageView.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" PreferredExecutionTarget="Android.192.168.56.101:5555" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="CircleImageView/MvxCircleImageView.cs">
     <Files>
-      <File FileName="CircleImageView/Resources/values/Attrs.xml" Line="1" Column="1" />
-      <File FileName="CircleImageView/CircleImageView.cs" Line="65" Column="1" />
-      <File FileName="Sample/MainActivity.cs" Line="9" Column="1" />
-      <File FileName="Sample/SampleApplication.cs" Line="17" Column="1" />
+      <File FileName="CircleImageView/MvxCircleImageView.cs" Line="72" Column="83" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="CircleImageView" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
