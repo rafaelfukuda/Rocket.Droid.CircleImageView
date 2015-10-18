@@ -77,6 +77,10 @@ namespace Rocket.Droid
 			Init();			
 		}
 
+		public MvxCircleImageView(IntPtr javaRef, Android.Runtime.JniHandleOwnership transfer) : base(javaRef, transfer)
+		{
+		}
+
 		private void Init() {
 			this.SetScaleType (SCALE_TYPE);
 			mReady = true;
